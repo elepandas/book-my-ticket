@@ -14,6 +14,7 @@ A backend RESTful application built with **Spring Boot**, **Spring Data JPA (Hib
 | Database           | PostgreSQL                     |
 | API Style          | RESTful APIs (JSON)            |
 | Validation         | Hibernate Validator            |
+| API Documentation  | Springdoc OpenAPI (Swagger UI) |
 | Exception Handling | @RestControllerAdvice          |
 
 ---
@@ -21,42 +22,46 @@ A backend RESTful application built with **Spring Boot**, **Spring Data JPA (Hib
 ## 📁 Project Structure
 
 ```
-book-my-ticket/
-├── build.gradle
-├── settings.gradle
-├── gradlew / gradlew.bat
+publicissapient/                    ← Parent project (IDE workspace root)
+├── build.gradle                    ← Parent build (declares plugin versions)
+├── settings.gradle                 ← Includes book-my-ticket module
 ├── README.md
-└── src/main/
-    ├── java/com/ticketbooking/
-    │   ├── BookMyTicketApplication.java
-    │   ├── controller/
-    │   │   ├── UserController.java
-    │   │   ├── MovieController.java
-    │   │   ├── TheaterController.java
-    │   │   ├── ShowController.java
-    │   │   ├── BookingController.java
-    │   │   └── PaymentController.java
-    │   ├── service/
-    │   │   ├── UserService.java
-    │   │   ├── MovieService.java
-    │   │   ├── TheaterService.java
-    │   │   ├── ShowService.java
-    │   │   ├── BookingService.java
-    │   │   └── PaymentService.java
-    │   ├── repository/
-    │   ├── model/
-    │   │   ├── enums/
-    │   │   ├── User.java, Movie.java, Theater.java
-    │   │   ├── Show.java, Seat.java, Booking.java
-    │   │   └── Payment.java
-    │   ├── dto/
-    │   ├── exception/
-    │   └── config/
-    └── resources/
-        ├── application.yml
-        └── db/
-            ├── init.sql
-            └── sample-data.sql
+└── book-my-ticket/                 ← Spring Boot module
+    ├── build.gradle
+    ├── gradlew / gradlew.bat
+    ├── README.md
+    └── src/main/
+        ├── java/com/ticketbooking/
+        │   ├── BookMyTicketApplication.java
+        │   ├── config/
+        │   │   └── OpenApiConfig.java
+        │   ├── controller/
+        │   │   ├── UserController.java
+        │   │   ├── MovieController.java
+        │   │   ├── TheaterController.java
+        │   │   ├── ShowController.java
+        │   │   ├── BookingController.java
+        │   │   └── PaymentController.java
+        │   ├── service/
+        │   │   ├── UserService.java
+        │   │   ├── MovieService.java
+        │   │   ├── TheaterService.java
+        │   │   ├── ShowService.java
+        │   │   ├── BookingService.java
+        │   │   └── PaymentService.java
+        │   ├── repository/
+        │   ├── model/
+        │   │   ├── enums/
+        │   │   ├── User.java, Movie.java, Theater.java
+        │   │   ├── Show.java, Seat.java, Booking.java
+        │   │   └── Payment.java
+        │   ├── dto/
+        │   └── exception/
+        └── resources/
+            ├── application.yml
+            └── db/
+                ├── init.sql
+                └── sample-data.sql
 ```
 
 ---
@@ -382,6 +387,26 @@ The app starts at: **http://localhost:8089**
 
 ---
 
+## 📖 Swagger / OpenAPI Documentation
+
+Swagger UI is auto-configured via `springdoc-openapi-ui`. Once the app is running:
+
+| Resource | URL |
+|---|---|
+| Swagger UI | [http://localhost:8089/swagger-ui.html](http://localhost:8089/swagger-ui.html) |
+| OpenAPI JSON | [http://localhost:8089/v3/api-docs](http://localhost:8089/v3/api-docs) |
+| OpenAPI YAML | [http://localhost:8089/v3/api-docs.yaml](http://localhost:8089/v3/api-docs.yaml) |
+
+All 6 controllers are automatically documented:
+- User APIs (`/api/users/**`)
+- Movie APIs (`/api/movies/**`)
+- Theater APIs (`/api/theaters/**`)
+- Show APIs (`/api/shows/**`)
+- Booking APIs (`/api/bookings/**`)
+- Payment APIs (`/api/payments/**`)
+
+---
+
 ## 📦 Build Executable JAR for Deployment
 
 ### Generate the JAR
@@ -439,7 +464,6 @@ java -jar build/libs/book-my-ticket-0.0.1-SNAPSHOT.jar \
 - Payment gateway integration (Razorpay / Stripe)
 - JWT-based authentication with Spring Security
 - Admin dashboard
-- Swagger/OpenAPI documentation
 - Cancel booking API
 
 ---

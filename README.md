@@ -1,2 +1,23 @@
-# book-my-ticket
-The Movie &amp; Show Ticket Booking System is a backend RESTful application that allows  users to browse movies and shows, check seat availability, book tickets, and manage their  bookings. The system is built using Spring Boot, Spring Data JPA (Hibernate), and  PostgreSQL, with Gradle as the build automation too
+# publicissapient
+
+Parent Gradle project containing the following modules:
+
+## Modules
+
+| Module | Description |
+|---|---|
+| [book-my-ticket](book-my-ticket/) | Movie & Show Ticket Booking System — RESTful backend built with Spring Boot, Spring Data JPA, PostgreSQL |
+
+## Quick Start
+
+```bash
+# Build all modules
+cd book-my-ticket
+gradlew.bat :book-my-ticket:bootRun
+```
+
+- App: `http://localhost:8089`
+- Swagger UI: `http://localhost:8089/swagger-ui.html`
+- OpenAPI Docs: `http://localhost:8089/v3/api-docs`
+
+See [book-my-ticket/README.md](book-my-ticket/README.md) for full details.
